@@ -874,9 +874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ca2d135122dcc4abfb4396dfd548d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConfigSO: {fileID: 11400000, guid: bb4c2ba6395e8bc4d9813b39b4709656, type: 2}
   togglePrefab: {fileID: 444589557450058180, guid: 2d29a8be5bfc0464db6ca888f43de1ca, type: 3}
   inputFieldPrefab: {fileID: 4002459209755723296, guid: 86b79c83fe24d16418cf53173a949603, type: 3}
+  saveConfigPrefab: {fileID: 6224225339650770132, guid: 7e4dd861d9d79084ba45a66aed7c7f0c, type: 3}
   configParent: {fileID: 1902548859}
 --- !u!114 &1902548861
 MonoBehaviour:

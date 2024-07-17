@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99b0f4aea2f5b2440b9e77171f88a514, type: 3}
-  m_Name: Config2
+  m_Name: testsets2
   m_EditorClassIdentifier: 
   config:
-    hasTimer: 1
+    hasTimer: 0
     hasDirectionSignposts: 1
-    hasLocationSignposts: 0
-    timeLimit: 1234
+    hasLocationSignposts: 1
+    timeLimit: 0
