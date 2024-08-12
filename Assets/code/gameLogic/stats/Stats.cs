@@ -25,7 +25,7 @@ public static class Stats
         Debug.Log(TimeTaken.Dump());
         Debug.Log(AverageDistanceFromLine.Dump());
         Debug.Log(DistanceTravelled.Dump());
-        
+        // PATH TAKEN
         Debug.Log("Player has reached the landmark.");
     }
 }

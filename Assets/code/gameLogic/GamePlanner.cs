@@ -18,6 +18,8 @@ public class GamePlanner : MonoBehaviour
     {
         if (landmarks.transform.childCount > 0)
             {
+                // seed the random number generator
+                Random.InitState(System.DateTime.Now.Millisecond);
                 int index = Random.Range(0, landmarks.transform.childCount);
                 selectedLandmark = landmarks.transform.GetChild(index).gameObject;
                 Debug.Log("Selected landmark: " + selectedLandmark.name);

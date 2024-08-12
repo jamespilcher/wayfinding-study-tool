@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System.Collections.Generic;
+
 using System.Reflection;
 using TMPro;
 #if UNITY_EDITOR
@@ -14,10 +17,11 @@ public class ConfigMenuManager : MonoBehaviour
     public GameObject inputFieldPrefab; // Assign an InputField prefab in the Inspector
     public GameObject saveConfigPrefab;
     public Transform configParent; // Assign the parent object for toggles in the Inspector
+    public TMP_Dropdown configFilesDropdown; // Assign this in the Unity Editor
 
     private GameConfig gameConfig = new GameConfig();
 
-    private string configSavePath = "Assets/code/mainMenu/gameConfig/SerialisedConfigs/";
+    private string configSavePath = "Assets/Code/MainMenu/GameConfig/SerialisedConfigs/";
 
     void Awake()
     {
@@ -34,7 +38,37 @@ public class ConfigMenuManager : MonoBehaviour
 
     void Start()
     {
+        PopulateConfigFilesDropdown();
         PopulateConfigMenu();
+    }
+
+    void PopulateConfigFilesDropdown()    {
+        // Ensure the Dropdown is assigned
+        if (configFilesDropdown == null)
+        {
+            Debug.LogError("ConfigFilesDropdown is not assigned.");
+            return;
+        }
+
+        // Get all file paths in the config save path
+        string[] filePaths = Directory.GetFiles(configSavePath);
+
+        // Clear existing options
+        configFilesDropdown.ClearOptions();
+
+        // Create a list to hold the file names
+        List<string> fileNames = new List<string>();
+
+        // Extract file names from paths
+        foreach (string filePath in filePaths)
+        {
+            if (!filePath.EndsWith(".asset")) continue;
+            string fileName = Path.GetFileNameWithoutExtension(filePath);
+            fileNames.Add(fileName);
+        }
+
+        // Add file names as new options
+        configFilesDropdown.AddOptions(fileNames);
     }
 
     void PopulateConfigMenu()
