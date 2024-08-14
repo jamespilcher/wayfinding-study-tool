@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportManager : MonoBehaviour
+public class TrialManager : MonoBehaviour
 {
     public GameObject landmarks;
     public GameObject gridTracker;
@@ -13,15 +13,16 @@ public class TeleportManager : MonoBehaviour
     private Vector2Int startingCoords;
     private string targetLandmark;
 
+    private bool participantFinished = false;
+
     void Start()
     {
         if (DSPPathsData != null && DSPPathsData.DSPPaths.Count > 0)
         {
             // Initialize the starting position and target position
             currentPathIndex = 0;
-            startingCoords = DSPPathsData.DSPPaths[currentPathIndex].spawnPosition;
-            targetLandmark = DSPPathsData.DSPPaths[currentPathIndex].targetLandmarkName;
-            TeleportPlayer(startingCoords);
+            // start tracking data
+            RunTrial(currentPathIndex);
         }
         else
         {
@@ -31,31 +32,40 @@ public class TeleportManager : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (player != null && !participantFinished)
         {
             GameObject targetTrigger = LookUpLandmarkTrigger(targetLandmark);
+            DataCollector.UpdateTrackingTrialData();
             if (isPosInTrigger(player.transform.position, targetTrigger))
             {
-                dumpLogs();
+                DataCollector.FinishTrackingTrialData();
                 // Player has reached the target position, move to the next path
                 currentPathIndex++;
                 if (currentPathIndex < DSPPathsData.DSPPaths.Count)
                 {
-                    startingCoords = DSPPathsData.DSPPaths[currentPathIndex].spawnPosition;
-                    targetLandmark = DSPPathsData.DSPPaths[currentPathIndex].targetLandmarkName;
-                    TeleportPlayer(startingCoords);
+                    RunTrial(currentPathIndex);
                 }
                 else
                 {
                     Debug.Log("Player has completed the study.");
+                    participantFinished = true;
                 }
             }
         }
     }
 
-    void dumpLogs()
+    void DisplayTargetLandmark()
     {
-        Debug.Log("Player has reached the landmark.");
+        Debug.Log("Next trial: " + targetLandmark);
+    }
+
+
+    void RunTrial(int n){
+        startingCoords = DSPPathsData.DSPPaths[currentPathIndex].spawnPosition;
+        targetLandmark = DSPPathsData.DSPPaths[currentPathIndex].targetLandmarkName;
+        TeleportPlayerToCoords(startingCoords);
+        DisplayTargetLandmark();
+        DataCollector.StartTrackingTrialData();
     }
 
     bool isPosInTrigger(Vector3 pos, GameObject trigger)
@@ -69,9 +79,11 @@ public class TeleportManager : MonoBehaviour
     }
     
 
-    public void TeleportPlayer(Vector2Int targetCoords) // fix!
+    public void TeleportPlayerToCoords(Vector2Int targetCoords) // fix!
     {
-        player.transform.position = GetTriggerFromCoords(targetCoords).transform.position;
+        Debug.Log("Teleporting player to " + targetCoords);
+        Vector3 targetPosition = GetTriggerFromCoords(targetCoords).transform.position;
+        player.transform.position = new Vector3(targetPosition.x, player.transform.position.y, targetPosition.z);
     }
 
 public GameObject GetTriggerFromCoords(Vector2Int coords)

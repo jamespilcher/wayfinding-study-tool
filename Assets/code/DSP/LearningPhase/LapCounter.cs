@@ -29,8 +29,6 @@ public class LapCounter : MonoBehaviour
         {
             // Allow the player to pass through
             SetWallState(false);
-
-            Debug.Log("Player detected entering from the west");
             lapCount++; // Increment the lap count
             UpdateLapCounterText(); // Update the UI text
         }

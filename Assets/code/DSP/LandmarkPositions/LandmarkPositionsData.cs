@@ -19,4 +19,4 @@ public class LandmarkPosition
 public class LandmarkPositionsData : ScriptableObject
 {
     public List<LandmarkPosition> landmarkPositions = new List<LandmarkPosition>();
-}
+} 

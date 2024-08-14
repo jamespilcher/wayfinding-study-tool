@@ -25,3 +25,9 @@ MonoBehaviour:
     targetLandmarkName: Lamppost
   - spawnPosition: {x: 11, y: 7}
     targetLandmarkName: Chair
+  - spawnPosition: {x: 4, y: 9}
+    targetLandmarkName: Mailbox
+  - spawnPosition: {x: 6, y: 6}
+    targetLandmarkName: Hammer
+  - spawnPosition: {x: 8, y: 3}
+    targetLandmarkName: Anvil

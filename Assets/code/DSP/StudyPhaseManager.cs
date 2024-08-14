@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StateManager : MonoBehaviour
+public class StudyPhaseManager : MonoBehaviour
 {
-    public static StateManager Instance { get; private set; }
+    public static StudyPhaseManager Instance { get; private set; }
 
     void Awake()
     {
