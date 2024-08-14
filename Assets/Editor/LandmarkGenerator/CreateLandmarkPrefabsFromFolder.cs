@@ -87,7 +87,7 @@ public static class CreateLandmarkPrefabsFromFolder
     }
 
     // Save the modified prefab to the landmarkPrefabDestinationFolder
-    string newPrefabPath = Path.Combine(landmarkPrefabDestinationFolder, Path.GetFileNameWithoutExtension(prefabFile) + "Prefab.prefab");
+    string newPrefabPath = Path.Combine(landmarkPrefabDestinationFolder, Path.GetFileName(prefabFile));
     PrefabUtility.SaveAsPrefabAsset(propInstance, newPrefabPath);
 
     // Clean up the instantiated objects

@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Level/Scenes/MainMenu.unity
-    guid: c317fd5e7f7518f40ba764389da04b1f
+    path: Assets/Level/Scenes/DSP/DSPTesting.unity
+    guid: 13d0d9f1593067c408df33ca9c396791
   - enabled: 1
-    path: Assets/Level/Scenes/MazeScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Level/Scenes/DSP/DSPTraining.unity
+    guid: fa03a9c1c581f6b4ebfbdb34d43871bf
+  - enabled: 1
+    path: Assets/Level/Scenes/DSP/DSPLearning.unity
+    guid: 74860a20051010f4a89422c2b61456ad
   m_configObjects: {}
