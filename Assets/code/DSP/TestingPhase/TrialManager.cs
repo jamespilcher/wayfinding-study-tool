@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Text.RegularExpressions;
 
 public class TrialManager : MonoBehaviour
 {
+    public StudyConfig studyConfig;
+    public DSPPathsData DSPPathsData;
+    public LandmarkPositionsData landmarkPositionsData;
     public GameObject landmarks;
     public GameObject gridTracker;
     public GameObject player;
-    public LandmarkPositionsData landmarkPositionsData;
-    public DSPPathsData DSPPathsData;
+    public TMP_Text trialTargetText;
 
+
+    private List<DSPPath> DSPPaths;
     private int currentPathIndex = 0;
     private Vector2Int startingCoords;
     private string targetLandmark;
@@ -17,8 +23,15 @@ public class TrialManager : MonoBehaviour
 
     void Start()
     {
+
+        
         if (DSPPathsData != null && DSPPathsData.DSPPaths.Count > 0)
         {
+            DSPPaths = DSPPathsData.DSPPaths;
+            if (studyConfig.shuffleDSPPaths)
+            {
+                ShuffleDSPPaths();
+            }
             // Initialize the starting position and target position
             currentPathIndex = 0;
             // start tracking data
@@ -35,37 +48,64 @@ public class TrialManager : MonoBehaviour
         if (player != null && !participantFinished)
         {
             GameObject targetTrigger = LookUpLandmarkTrigger(targetLandmark);
-            DataCollector.UpdateTrackingTrialData();
+            DataCollector.UpdateTrackingTrialData(player);
             if (isPosInTrigger(player.transform.position, targetTrigger))
             {
-                DataCollector.FinishTrackingTrialData();
-                // Player has reached the target position, move to the next path
+                DataCollector.FinishTrackingTrialData(currentPathIndex, startingCoords, targetLandmark);
                 currentPathIndex++;
-                if (currentPathIndex < DSPPathsData.DSPPaths.Count)
+                if (currentPathIndex < DSPPaths.Count)
                 {
                     RunTrial(currentPathIndex);
                 }
                 else
                 {
-                    Debug.Log("Player has completed the study.");
-                    participantFinished = true;
+                    ParticipantCompleted();
                 }
             }
         }
     }
 
+    void ShuffleDSPPaths()
+    {
+        // fisher-yates shuffle
+        System.Random rng = new System.Random();
+        int n = DSPPaths.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            DSPPath value = DSPPaths[k];
+            DSPPaths[k] = DSPPaths[n];
+            DSPPaths[n] = value;
+        }
+    }
+
+    void ParticipantCompleted()
+    {
+        participantFinished = true;
+        Debug.Log("Player has completed the study.");
+        DataCollector.SaveDataToFile("Assets/Code/DSP/TestingPhase/trialData.csv"); // todo: fix path
+    }
+
     void DisplayTargetLandmark()
     {
+        // trialTargetText.text = "Find " + targetLandmark; // beautify the text!!!
+
+
+        string beautifiedTargetLandmark = Regex.Replace(targetLandmark, "(\\B[A-Z])", " $1");
+        trialTargetText.text = "Find " + beautifiedTargetLandmark;
+
+
         Debug.Log("Next trial: " + targetLandmark);
     }
 
 
     void RunTrial(int n){
-        startingCoords = DSPPathsData.DSPPaths[currentPathIndex].spawnPosition;
-        targetLandmark = DSPPathsData.DSPPaths[currentPathIndex].targetLandmarkName;
+        startingCoords = DSPPaths[currentPathIndex].spawnPosition;
+        targetLandmark = DSPPaths[currentPathIndex].targetLandmarkName;
         TeleportPlayerToCoords(startingCoords);
         DisplayTargetLandmark();
-        DataCollector.StartTrackingTrialData();
+        DataCollector.StartTrackingTrialData(player);
     }
 
     bool isPosInTrigger(Vector3 pos, GameObject trigger)

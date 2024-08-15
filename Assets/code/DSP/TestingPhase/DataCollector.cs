@@ -3,41 +3,46 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DataCollector
+public static class DataCollector
 {
     private static List<Dictionary<string, string>> trialsData = new List<Dictionary<string, string>>();
     private static Dictionary<string, string> currentTrialData;
 
-    public static void StartTrackingTrialData() // trial number, 
+    public static void StartTrackingTrialData(GameObject player) // trial number, 
     {
-        // Initialize a new dictionary for the current trial
+        TimeTaken.StartTimer();
+        GranularDistanceTravelled.StartPosition(player.transform.position);
         currentTrialData = new Dictionary<string, string>();
         Debug.Log("Start Tracking Trial Data.");
     }
 
-    public static void UpdateTrackingTrialData()
+    public static void UpdateTrackingTrialData(GameObject player)
     {
+        GranularDistanceTravelled.ProcessDistanceToNewPosition(player.transform.position);
         // Update the current trial data
 
         // keys: trial number, time taken, distance travelled, path taken etc
         // values, dumped data from TimeTaken, DistanceTravelled, PathTaken manager classes.
 
-        if (currentTrialData != null)
-        {
-            currentTrialData["key"] = "value";
-        }
+
         // Debug.Log("Updating stats.");
     }
 
-    public static void FinishTrackingTrialData()
+    public static void FinishTrackingTrialData(int trialNumber, Vector2Int spawnPosition, string targetLandmark)
     {
-        // Add the current trial data to the list of trials
+
         if (currentTrialData != null)
         {
+            currentTrialData["participantID"] = "1"; // TODO
+            currentTrialData["trialNumber"] = trialNumber.ToString();
+            currentTrialData["spawnPosition"] = spawnPosition.ToString().Replace(",", "");
+            currentTrialData["targetLandmark"] = targetLandmark;
+            currentTrialData["timeTaken"] = TimeTaken.Dump().ToString();
+            currentTrialData["granularDistanceTravelled"] = GranularDistanceTravelled.Dump().ToString();
             trialsData.Add(currentTrialData);
             currentTrialData = null;
         }
-        Debug.Log("Data saved.");
+        Debug.Log("Data saved to memory");
     }
 
     public static void SaveDataToFile(string filePath)

@@ -1,0 +1,10 @@
+participantID,trialNumber,spawnPosition,targetLandmark,timeTaken,granularDistanceTravelled
+1,0,(6 1),Crate,7.994093,74.668
+1,1,(4 9),Mailbox,2.89778,24.30279
+1,2,(1 1),Trashcan,4.043961,31.32561
+1,3,(6 6),Hammer,3.995795,32.77684
+1,4,(11 7),Chair,4.975229,44.61735
+1,5,(3 3),Lamppost,4.001408,38.51173
+1,6,(8 3),Anvil,4.11006,33.43099
+1,7,(9 6),Barrel,4.167843,43.30799
+1,8,(4 8),Tombstone,2.939861,32.6981
