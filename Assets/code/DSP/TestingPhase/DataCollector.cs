@@ -12,6 +12,9 @@ public static class DataCollector
     {
         TimeTaken.StartTimer();
         GranularDistanceTravelled.StartPosition(player.transform.position);
+        ManhattanPathing.StartCoords(player.transform.position);
+        // get trigger the player is standing in
+        
         currentTrialData = new Dictionary<string, string>();
         Debug.Log("Start Tracking Trial Data.");
     }
@@ -19,42 +22,41 @@ public static class DataCollector
     public static void UpdateTrackingTrialData(GameObject player)
     {
         GranularDistanceTravelled.ProcessDistanceToNewPosition(player.transform.position);
-        // Update the current trial data
-
-        // keys: trial number, time taken, distance travelled, path taken etc
-        // values, dumped data from TimeTaken, DistanceTravelled, PathTaken manager classes.
-
-
-        // Debug.Log("Updating stats.");
+        ManhattanPathing.UpdateCoords(player.transform.position);
     }
 
     public static void FinishTrackingTrialData(int trialNumber, Vector2Int spawnPosition, string targetLandmark)
     {
-
         if (currentTrialData != null)
         {
-            currentTrialData["participantID"] = "1"; // TODO
+            currentTrialData["participantID"] = StudyConfig.Instance.participantID.ToString(); // TODO
             currentTrialData["trialNumber"] = trialNumber.ToString();
             currentTrialData["spawnPosition"] = spawnPosition.ToString().Replace(",", "");
             currentTrialData["targetLandmark"] = targetLandmark;
             currentTrialData["timeTaken"] = TimeTaken.Dump().ToString();
             currentTrialData["granularDistanceTravelled"] = GranularDistanceTravelled.Dump().ToString();
+            currentTrialData["ManhattanRoute"] = ManhattanPathing.DumpMannhattanRouteAsString();
+            currentTrialData["ManhattanRouteDistance"] = ManhattanPathing.DumpDistanceOfLine().ToString();
             trialsData.Add(currentTrialData);
             currentTrialData = null;
         }
         Debug.Log("Data saved to memory");
     }
 
-    public static void SaveDataToFile(string filePath)
+    public static void SaveDataToFile()
     {
-        // Save data to a csv
-        using (StreamWriter writer = new StreamWriter(filePath))
+        string filePath = "Assets/Code/DSP/TestingPhase/trialData" + StudyConfig.Instance.studyName + ".csv";
+        bool fileExists = File.Exists(filePath);
+
+        using (StreamWriter writer = new StreamWriter(filePath, append: true))
         {
-            // Write the header
             if (trialsData.Count > 0)
             {
-                var header = string.Join(",", trialsData[0].Keys);
-                writer.WriteLine(header);
+                if (!fileExists && trialsData.Count > 0)
+                {
+                    var header = string.Join(",", trialsData[0].Keys);
+                    writer.WriteLine(header);
+                }
 
                 // Write the data
                 foreach (var trial in trialsData)
@@ -63,6 +65,7 @@ public static class DataCollector
                     writer.WriteLine(line);
                 }
             }
+
         }
 
         Debug.Log("Data saved to file.");

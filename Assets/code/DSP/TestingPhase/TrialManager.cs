@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 public class TrialManager : MonoBehaviour
 {
-    public StudyConfig studyConfig;
+    public StudyConfig studyConfig = StudyConfig.Instance;
     public DSPPathsData DSPPathsData;
     public LandmarkPositionsData landmarkPositionsData;
     public GameObject landmarks;
@@ -84,7 +84,7 @@ public class TrialManager : MonoBehaviour
     {
         participantFinished = true;
         Debug.Log("Player has completed the study.");
-        DataCollector.SaveDataToFile("Assets/Code/DSP/TestingPhase/trialData.csv"); // todo: fix path
+        DataCollector.SaveDataToFile(); // todo: fix path
     }
 
     void DisplayTargetLandmark()
