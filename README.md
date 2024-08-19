@@ -37,5 +37,5 @@ You can also find my email on my profile.
 If new logic is added to this project, it is preferable to [fork this repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks#about-forks) and, if suitable, submit a pull request.
 
 ## Special thanks
-Special thanks to [Cayley MacArthur](https://uwaterloo.ca/stratford-school-of-interaction-design-and-business/profiles/cayley-macarthur), [Mark Hancock](https://uwaterloo.ca/management-science-engineering/profile/m2hancoc), [Dahzhuang Teng](https://www.linkedin.com/in/dazhuang-teng-8b060824a/), [The Games Institute](https://uwaterloo.ca/games-institute/), and [Mitacs](https://www.mitacs.ca/) for facilitating this project.
+Special thanks to [Cayley MacArthur](https://uwaterloo.ca/stratford-school-of-interaction-design-and-business/profiles/cayley-macarthur), [Mark Hancock](https://uwaterloo.ca/management-science-engineering/profile/m2hancoc), [Dazhuang Teng](https://www.linkedin.com/in/dazhuang-teng-8b060824a/), [The Games Institute](https://uwaterloo.ca/games-institute/), and [Mitacs](https://www.mitacs.ca/) for facilitating this project.
 
