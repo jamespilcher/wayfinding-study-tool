@@ -16,7 +16,7 @@ This project includes an implementation of the Dual Solution Paradigm (DSP), a f
 - Extensibility for other studies and parameter tweaking.
 
 ## Set up
-
+1. [Install Unity ](https://unity.com/download)
 1. Clone the repository:
     ```sh
     git clone https://github.com/jamespilcher/wayfinding-study-tool
@@ -25,5 +25,5 @@ This project includes an implementation of the Dual Solution Paradigm (DSP), a f
 
 
 ## Special thanks
-Special thanks to Cayley MacArthur, Mark Hancock, Dahzhuang Teng, and The Games Institute for facilitating this project as part of my Mitacs Globalink Research Internship.
+Special thanks to Cayley MacArthur, Mark Hancock, Dahzhuang Teng, The Games Institute, and Mitacs for facilitating this project.
 

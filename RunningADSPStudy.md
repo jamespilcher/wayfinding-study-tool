@@ -1,5 +1,10 @@
 # Running A DSP Study
-The 'Dual Solution' refers to having a solution that either takes a shortcut or follows a known route, which highlights two key approaches to navigation. The DSP has been utilized in the following studies:
+![DSP diagram](readme-res/image-6.png)
+
+
+The 'Dual Solution' refers to having a solution that either takes a shortcut or follows a known route, which highlights two key approaches to navigation. The DSP concept was developed by Marchette, Bakker, and Shelton in [this 2011 study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4826051/) has since been utilized in [numerous studies](https://scholar.google.ca/scholar?hl=en&as_sdt=0%2C5&q=%22dual+solution+paradigm%22&btnG=) focussing on navigation techniques.
+
+The implementation in this repository is identical to the image presented above, and has therefore has room for implementing parameter tweaks, which is to be expected for novel studies.
 
 ### Set up:
 1. If necessary, define any additional parameters in `StudyConfig.cs` and implement it's logic. Most often these additional parameters will be your **indepedent variables**. The parameters will then automatically be displayed in the `DSPMainMenu` scene.
