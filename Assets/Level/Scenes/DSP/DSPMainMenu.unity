@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 48482612}
   - component: {fileID: 48482611}
   - component: {fileID: 48482610}
-  - component: {fileID: 48482609}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -142,18 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &48482609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48482608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74847d6b1b992584483ebbf1f8d39fb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &48482610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +745,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   togglePrefab: {fileID: 444589557450058180, guid: 2d29a8be5bfc0464db6ca888f43de1ca, type: 3}
   inputFieldPrefab: {fileID: 4002459209755723296, guid: 86b79c83fe24d16418cf53173a949603, type: 3}
-  studyConfig: {fileID: 11400000, guid: 4c4772172d3cefc43b8a1497bca4cf8f, type: 2}
   canvas: {fileID: 992238543}
 --- !u!4 &1355468141
 Transform:
