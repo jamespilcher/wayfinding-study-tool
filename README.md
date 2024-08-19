@@ -11,18 +11,18 @@ This Unity project is intended to be a tool for conducting wayfinding studies, w
 This project includes an implementation of the Dual Solution Paradigm (DSP), a framework commonly used in wayfinding studies to analyze how individuals navigate and find their way in different environments. Please see [Running a DSP Study](RunningADSPStudy.md) for more info.
 
 ## Features
-- A fully working Dual Solution Paradigm implementation
+- A fully working and usuable Dual Solution Paradigm Study implementation
 - Stat collection for individual trials and studies as a whole
-- Extensibility for other studies and parameter tweaking in a modern and stable unity version.
-- A framework from which future wayfinding studies can be ran from.
+- An extensible codebase, in which new parameters and logic can be added in a modern and stable unity version.
+- Generally, a framework from which future wayfinding studies can be ran from.
 
 ## Set up
 1. [Install Unity ](https://unity.com/download)
-1. Clone the repository:
+2. Clone the repository:
     ```
     git clone https://github.com/jamespilcher/wayfinding-study-tool
     ```
-2. Open the project in `Unity 2022.3.30f1` or later.
+3. Open the project in `Unity 2022.3.30f1` or later.
 
 ## Feature Requests and Issues
 

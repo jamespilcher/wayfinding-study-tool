@@ -8,20 +8,23 @@ The implementation in this repository is identical to the image presented above,
 
 Alternatively, if the independent variables don't require logic changes (I.E exist in real-life), you are ready to go!
 
-### Set up:
+## Set up:
 1. As said before, if necessary, define any additional parameters in `StudyConfig.cs` and implement it's logic. Most often these additional parameters will be your **indepedent variables**. The parameters will then automatically be displayed in the `DSPMainMenu` scene. 
 2. If disabling shadows (as shadows grant more localisation information) is desired: Edit -> Project Settings -> Quality -> Shadows -> Disable Shadows.
 3. In `Assets/Code/DSP` There is a scriptable object called DSPPathsData for managing the DSP trials. This will define 1. the player spawn coordinates (based on a 13x13 grid system), and 2. the target landmark to navigate to. Configure this Scriptable Object in order to include trials which will test navigational strategy. The current values in the scriptable object should be used as an example.
 
 ## Running the study
-1. Run the `DSPMainMenu` Scene and configure parameters. The parameters are set to their default values, and therefore should be defined at runtime for each participant. For large scale studies, a script could be written to achieve this.
+A video can be found [here](https://www.youtube.com/watch?v=utMFn1oeuIE).
+
+1. Run the `DSPMainMenu` Scene in `Assets/Level/Scenes/DSP` and configure parameters. The parameters are set to their default values, and therefore should be defined at runtime for each participant. For large scale studies, a script could be written to achieve this.
 2. For each participant:
     - Define their participant ID and other parameters
-    - Select Begin. This will load into the controls Training Scene.
-    - Use the following KeyBindings to navigate to the correct stage of the study: 8->Training, 9->Learning, 0->TestingPhase.
+    - Select Begin. This will load into the Training Scene.
     - Once Participant is happy with the controls, change scene to the Learning phase by pressing the number 9.
     - Do a set number of laps (typically 5) following the red line. At each landmark, the participant should familiarise themself with it. Once completed, change scene to the Testing phase by pressing the number 0.
     - The parcipant will complete all the trials listed in the `DSPPathsData` scriptable object. Once completed, all statistics for that participant will be collated and appended to a csv named `trialData\<StudyName\>.csv`
+
+*Use the following KeyBindings to navigate to the correct phase of the study: 8->Training, 9->Learning, 0->TestingPhase.*
 
 3. Once study is completed you will have a CSV located at `Assets/Code/DSP` containing the following fields:
 - **participantID** - unique identifier for the participant
