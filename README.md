@@ -2,7 +2,7 @@
 
 Made in `Unity 2022.3.30f1`
 
-![Project Screenshot](image-4.png)
+![Project Screenshot](readme-res/image-4.png)
 
 ## Overview
 
@@ -38,13 +38,13 @@ Please see `Running a DSP Study` for more info
 4. **Save Data**: Use the `SaveDataToFile` method to save the collected data to a CSV file.
 
 
-![DSP Main Menu](image.png)
+![DSP Main Menu](readme-res/image.png)
 
-![Training Phase](image-1.png)
+![Training Phase](readme-res/image-1.png)
 
-![Learning Phase](image-2.png)
+![Learning Phase](readme-res/image-2.png)
 
-![Testing Phase](image-3.png)
+![Testing Phase](readme-res/image-3.png)
 
 
 [![DSP Video](https://img.youtube.com/vi/utMFn1oeuIE/0.jpg)](https://www.youtube.com/watch?v=utMFn1oeuIE)
