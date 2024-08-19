@@ -22,7 +22,7 @@ A video can be found [here](https://www.youtube.com/watch?v=utMFn1oeuIE).
     - Select Begin. This will load into the Training Scene.
     - Once Participant is happy with the controls, change scene to the Learning phase by pressing the number 9.
     - Do a set number of laps (typically 5) following the red line. At each landmark, the participant should familiarise themself with it. Once completed, change scene to the Testing phase by pressing the number 0.
-    - The parcipant will complete all the trials listed in the `DSPPathsData` scriptable object. Once completed, all statistics for that participant will be collated and appended to a csv named `trialData\<StudyName\>.csv`
+    - The parcipant will complete all the trials listed in the `DSPPathsData` scriptable object. Once completed, all statistics for that participant will be collated and appended to a csv named `trialData<StudyName>.csv`
 
 *Use the following KeyBindings to navigate to the correct phase of the study: 8->Training, 9->Learning, 0->TestingPhase.*
 
