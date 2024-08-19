@@ -23,15 +23,15 @@ public class StudyPhaseManager : MonoBehaviour
     void Update()
     {
         // keys 1,2,3 to switch between scenes
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             SceneManager.LoadScene("DSPTraining");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             SceneManager.LoadScene("DSPLearning");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             SceneManager.LoadScene("DSPTesting");
         }
