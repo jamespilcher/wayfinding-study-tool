@@ -45,7 +45,7 @@ public static class DataCollector
 
     public static void SaveDataToFile()
     {
-        string filePath = "Assets/Code/DSP/TestingPhase/trialData" + StudyConfig.Instance.studyName + ".csv";
+        string filePath = "Assets/Code/DSP/TestingPhase/StudyData" + StudyConfig.Instance.studyName + ".csv";
         bool fileExists = File.Exists(filePath);
 
         using (StreamWriter writer = new StreamWriter(filePath, append: true))
